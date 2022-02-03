@@ -1,0 +1,21 @@
+<div>
+        {%for question  in quiz_questions %}
+            <div>
+                <p>@{{question.user}} </p> 
+                <form action="" method = "">
+                <h3>{{question.question_title}}</h3>
+                <input type="radio" name="{{question.option1}}" >
+                <label ></label>{{question.option1}}</label><br>
+                <input type="radio" name="{{question.option2}}" >
+                <label >{{question.option1}}</label><br>
+                <input type="radio" name="{{question.option3}}">
+                <label>{{question.option4}}</label>
+                <br>
+                <input type="radio" name="{{question.option4}}">
+                <label>{{question.option4}}</label>
+                <br>
+                <input name = "submit"  type = "submit" value = "submit"/> 
+
+            </div>
+        {%endfor%}
+</div>
