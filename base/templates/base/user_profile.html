@@ -1,0 +1,22 @@
+{% extends 'base/main.html' %}
+
+
+{%block content %}
+   
+<h3>@{{request.user}}</h3>
+<li><a href="{%url 'edit-profile' %}">Edit Profile</a></li>
+
+<div>
+    {%for q in question  %}
+         
+    <h3>{{q.question_title}}</h3>
+    <p>Answer : {{q.answer}}</p>
+
+
+{%endfor%}
+
+
+</div>
+
+
+{%endblock%}

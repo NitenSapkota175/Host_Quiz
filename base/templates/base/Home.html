@@ -1,21 +1,47 @@
+{% extends 'base/main.html'%}
+
+{% block content%}
 <div>
-        {%for question  in quiz_questions %}
+        {%for question  in questions %}
             <div>
                 <p>@{{question.user}} </p> 
-                <form action="" method = "">
+              
+                    
                 <h3>{{question.question_title}}</h3>
-                <input type="radio" name="{{question.option1}}" >
-                <label ></label>{{question.option1}}</label><br>
-                <input type="radio" name="{{question.option2}}" >
-                <label >{{question.option1}}</label><br>
-                <input type="radio" name="{{question.option3}}">
-                <label>{{question.option4}}</label>
-                <br>
-                <input type="radio" name="{{question.option4}}">
-                <label>{{question.option4}}</label>
-                <br>
-                <input name = "submit"  type = "submit" value = "submit"/> 
+                <p>a) {{question.option1}}</p>
+                <p>b {{question.option2}}</p>
+                <p>c) {{question.option3}}</p>
+                <p>d) {{question.option2}}</p>
+
+                {% if isanswer == 'Right' %}
+                    <p>Your answer is right</p>
+
+                {%elif isanswer == 'Wrong' %}
+                    <p>Your answer is wrong : Answer {{question.answer}}</p>
+                
+
+                {%endif%}
+
+
+                <form action="{%url 'Home' %}?q={{question.question_title}}" method = "POST">
+                    {%csrf_token%}
+                
+                <input name = 'name' type = 'text'>
+                 <input name = "submit"  type = "submit" value = "check"/>
+                
+               
+            </form>
+
+
+            {% if request.user == question.user %}
+            <a href="{%url  'edit-question' question.id %}">Edit</a>
+            <a href="{%url 'delete-question' question.id %}">Delete</a>
+        {%endif%}
+                    
+               
 
             </div>
         {%endfor%}
 </div>
+
+{% endblock content %}

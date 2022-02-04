@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class QuizQuestion(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     question_title = models.TextField()
     option1 = models.CharField(max_length=200)
     option2 = models.CharField(max_length=200)
