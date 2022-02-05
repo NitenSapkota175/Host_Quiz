@@ -16,7 +16,13 @@ class EditProfileForm(ModelForm):
         fields = ['username' ,'email']
 
 
+class AddQuestionForm(ModelForm):
+    class Meta:
+        model = QuizQuestion
+        fields = ['question_title' , 'option1' , 'option2', 'option3', 'option4', 'answer']
+
+
 class EditQuestions(ModelForm):
     class Meta:
         model = QuizQuestion
-        fields = '__all__'
+        fields =   ['question_title' , 'option1' , 'option2', 'option3', 'option4', 'answer']

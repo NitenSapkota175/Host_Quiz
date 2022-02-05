@@ -12,7 +12,12 @@ urlpatterns = [
     path('edit-profile',views.UpdateProfile , name= "edit-profile"),
     path('user-profile/<str:pk>',views.UserProfile , name= "user-profile"),
 
+    path('add-question/',views.CreateQuestion , name= "add-question"),
     path('delete-question/<str:pk>',views.Delete_Question , name= "delete-question"),
     path('edit-question/<str:pk>',views.Edit_Question , name= "edit-question"),
+
+    path('check-question/<str:pk>',views.Check_Question , name= "check-question"),
+
+    path('forgot-password/',views.Forgot_Password , name= "forgot-password"),
     
 ] 

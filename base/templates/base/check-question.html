@@ -1,0 +1,47 @@
+{% extends 'base/main.html'%}
+
+{% block content%}
+<div>
+        
+
+       
+            <div>
+                <p>@{{q.user}} </p> 
+              
+                    
+                <h3>{{q.question_title}}</h3>
+                <p>a) {{q.option1}}</p>
+                <p>b {{q.option2}}</p>
+                <p>c) {{q.option3}}</p>
+                <p>d) {{q.option2}}</p>
+            </div>
+                
+             {%if show %}
+             
+               {%if isanswer == 1%}
+                    <p>Your answer is right  : {{q.answer}}</p>
+
+                {%elif isanswer == 0 %}
+                    <p> Your answer is wrong </p>
+                    <p>Answer : {{q.answer}}</p>
+               {%endif%}
+             {%endif%}
+               <form action="" method = "POST">
+                    {%csrf_token%}
+                
+                <input name = 'answer' type = 'text'>
+                 <input name = "submit"  type = "submit" value = "check"/>
+                
+               
+            </form>
+
+
+            
+                    
+               
+
+          
+        
+</div>
+
+{% endblock content %}

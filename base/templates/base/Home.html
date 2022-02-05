@@ -1,44 +1,33 @@
 {% extends 'base/main.html'%}
 
 {% block content%}
+
+<div>
+    <form action="" method = "">
+        <input type="search" name="q" >
+        <input type="submit" name='submit'>
+
+    </form>
+   
+</div>
+
 <div>
         {%for question  in questions %}
             <div>
-                <p>@{{question.user}} </p> 
+                <p>@{{question.user}}</p> 
               
                     
                 <h3>{{question.question_title}}</h3>
-                <p>a) {{question.option1}}</p>
-                <p>b {{question.option2}}</p>
-                <p>c) {{question.option3}}</p>
-                <p>d) {{question.option2}}</p>
-
-                {% if isanswer == 'Right' %}
-                    <p>Your answer is right</p>
-
-                {%elif isanswer == 'Wrong' %}
-                    <p>Your answer is wrong : Answer {{question.answer}}</p>
-                
-
-                {%endif%}
-
-
-                <form action="{%url 'Home' %}?q={{question.question_title}}" method = "POST">
-                    {%csrf_token%}
-                
-                <input name = 'name' type = 'text'>
-                 <input name = "submit"  type = "submit" value = "check"/>
-                
+                <a href="{%url 'check-question' question.id %}">Guess answer here</a>
                
-            </form>
 
-
+            <br>
             {% if request.user == question.user %}
             <a href="{%url  'edit-question' question.id %}">Edit</a>
             <a href="{%url 'delete-question' question.id %}">Delete</a>
         {%endif%}
                     
-               
+        <hr>
 
             </div>
         {%endfor%}
